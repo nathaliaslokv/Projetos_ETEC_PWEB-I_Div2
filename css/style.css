@@ -45,7 +45,7 @@ nav a{
     color: #764ba2;/*cor roxa*/
     font-weight: 600;/*peso da fonte (semi negrito)*/
     padding: 0.5rem 1rem;/*8px em cima/baixo, 16px nas laterais*/
-    border-radius: 25%;/*bordas arredondadas*/
+    border-radius: 25px;/*bordas arredondadas*/
     transition: all 0.3s ease;/*transição suave para todas as propriedades*/
     position: relative;/*necessário para o pseudo elemento ::after*/
 }
@@ -54,6 +54,42 @@ nav a:hover{
     color: white;
     transform: translate(-2px);/*move 2px para cima*/
     box-shadow: 0 5px 15px rgba(118, 75, 162, 0.3);/*sombra roxa suave*/
+}
+nav a::after{/*pseudo elemento para criar a linha animada abaixo dos links*/
+    content: '';/*necessario para criar o elemento*/
+    position: absolute;/*posição em relação ao link*/
+    bottom: 0;/*cola a linha na parte inferior*/
+    left: 50%;/*começa do meio para as laterais*/
+    transform: translateX(-50%);/*centraliza horizontalmente*/
+    width: 0;/*começa com largura 0*/
+    height: 2px;/*altura da linha*/
+    background-color: chartreuse;
+    transition: width 0.3s ease;/*anima apenas a largura*/
+}
+nav a:hover::after{
+    width: 80%;/*expande para 80% da largura do link*/
+}
+/*===CONTEUDO DO BLOG===*/
+main{
+    max-width: 1200px;/*largura maxima em pixels*/
+    margin: 2rem auto;/*32px em cima/baixo e auto nas laterais*/
+    padding: 2rem;/*espaçamento interno de 32px em todos os lados*/
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;/*bordas arredondadas*/
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);/*sombra mais pronunciada*/
+    backdrop-filter: blur(10px);/*efeito de desfoque no fundo*/
+    animation: slideIn 0.5s ease-out;/*animação de entrada*/
+}
+/*===DEFINIÇÃO DA ANIMAÇÃO===*/
+@keyframes slideIn{/*aplicando os quadros de animação*/
+    from{/*estado inicial*/
+        opacity: 0;/*invisivel*/
+        transform: translateY(30px);/*30px para baixo*/
+    }
+    to{/*estado final*/
+        opacity: 1;/*visivel*/
+        transform: translateY(0);/*posição original*/
+    }
 }
 
 
